@@ -371,7 +371,15 @@ def _run_lstm(
         
         # Dataset artifact
         if "processed_csv_path" in context:
-            mlflow.log_artifact(context["processed_csv_path"], artifact_path="dataset")
+            csv_path = context["processed_csv_path"]
+            mlflow.log_artifact(csv_path, artifact_path="dataset")
+            try:
+                import mlflow.data as mfdata
+                df_for_log = pd.read_csv(csv_path)
+                dataset = mfdata.from_pandas(df_for_log, source=csv_path, name="daily_ads_data")
+                mlflow.log_input(dataset, context="training")
+            except Exception as e:
+                logger.warning(f"Failed to link dataset: {e}")
 
         # MLflow Signature & Input Example
         sample_x = train_ds[0][0].numpy()  # [sequence_length, input_size]
@@ -430,6 +438,7 @@ def run_lstm_experiment(
     all_results: list[dict] = []
 
     with mlflow.start_run(run_name="LSTM_main_experiment") as parent_run:
+        parent_id = parent_run.info.run_id
         mlflow.set_tag("model_family", "LSTM")
         mlflow.set_tag("device", str(DEVICE))
         mlflow.set_tag("cuda_available", str(torch.cuda.is_available()))
@@ -473,6 +482,12 @@ def run_lstm_experiment(
         raise RuntimeError("All LSTM configurations failed.")
 
     best = min(all_results, key=lambda r: r["metrics"]["test_rmse"])
+    
+    with mlflow.start_run(run_id=parent_id):
+        mlflow.log_metrics({f"best_{k}": v for k, v in best["metrics"].items()})
+        mlflow.set_tag("best_run_id", best["run_id"])
+        mlflow.set_tag("best_run_name", best["run_name"])
+
     logger.info(
         f"Best LSTM -> {best['run_name']} | RMSE={best['metrics']['test_rmse']:.4f}"
     )

@@ -1,0 +1,41 @@
+2026-02-25 19:13:54 [INFO    ] logger_setup | Logging initialised -> file: logs\20260225_191354_train.log
+2026-02-25 19:13:54 [INFO    ] logger_setup | Archive dir         -> C:\Users\modiv\Downloads\jjj\ad-sales-forecasting\logs\archive
+2026-02-25 19:13:54 [INFO    ] main | ********************************************************
+2026-02-25 19:13:54 [INFO    ] main | *   Ad Sales Forecasting - Training Pipeline           *
+2026-02-25 19:13:54 [INFO    ] main | ********************************************************
+2026-02-25 19:14:01 [INFO    ] src.train | Created MLflow experiment: 'Ad_Sales_TimeSeries' (id=1)
+2026-02-25 19:14:02 [INFO    ] src.train | ============================================================
+2026-02-25 19:14:02 [INFO    ] src.train | STEP 1 - Loading raw data
+2026-02-25 19:14:02 [INFO    ] src.data_loader | Loading raw data from: C:\Users\modiv\Downloads\jjj\ad-sales-forecasting\data\raw\global_ads_performance_dataset.csv
+2026-02-25 19:14:02 [INFO    ] src.data_loader |   Loaded 1,800 rows | Date range: 2024-01-01 -> 2024-12-30
+2026-02-25 19:14:02 [INFO    ] src.data_loader |   Daily aggregation -> 365 rows
+2026-02-25 19:14:02 [INFO    ] src.train |   Daily rows: 365
+2026-02-25 19:14:02 [INFO    ] src.train | STEP 2 - Feature engineering
+2026-02-25 19:14:02 [INFO    ] src.feature_engineering | Starting feature engineering …
+2026-02-25 19:14:02 [INFO    ] src.feature_engineering |   Feature engineering complete -> 43 features
+2026-02-25 19:14:02 [INFO    ] src.train | STEP 3 - Preprocessing (split + scale)
+2026-02-25 19:14:02 [INFO    ] src.preprocessing |   Split: train=255, val=54, test=56
+2026-02-25 19:14:02 [INFO    ] src.preprocessing |   Scalers saved to: data\processed/
+2026-02-25 19:14:02 [INFO    ] src.preprocessing |   Processed dataset saved to: data/processed/processed_ads.csv
+2026-02-25 19:14:02 [INFO    ] src.preprocessing |   Split: train=255, val=54, test=56
+2026-02-25 19:14:02 [INFO    ] src.preprocessing |   Scalers saved to: data\processed/
+2026-02-25 19:14:02 [INFO    ] src.preprocessing |   Processed dataset saved to: data/processed/processed_ads.csv
+2026-02-25 19:14:02 [INFO    ] src.train |   Processed snapshot saved -> data/processed/processed_ads.csv
+2026-02-25 19:14:02 [INFO    ] src.train | ============================================================
+2026-02-25 19:14:02 [INFO    ] src.train | STEP 4a - ARIMA Experiment
+2026-02-25 19:14:04 [INFO    ] src.models.arima_model | ARIMA parent run started …
+2026-02-25 19:14:04 [INFO    ] src.models.arima_model |   Grid combinations: 8
+2026-02-25 19:14:04 [INFO    ] src.models.arima_model |   Fitting ARIMA_p1_d1_q1 …
+2026-02-25 19:14:06 [ERROR   ] src.train |   ARIMA failed: cannot access local variable 'mlflow' where it is not associated with a value
+2026-02-25 19:14:06 [INFO    ] src.train | ============================================================
+2026-02-25 19:14:06 [INFO    ] src.train | STEP 4b - SARIMAX Experiment
+2026-02-25 19:14:08 [INFO    ] src.models.sarimax_model | SARIMAX parent run started …
+2026-02-25 19:14:08 [INFO    ] src.models.sarimax_model |   Grid combinations: 16
+2026-02-25 19:14:08 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q1_P1_D1_Q1_s7 …
+2026-02-25 19:14:09 [ERROR   ] src.train |   SARIMAX failed: cannot access local variable 'mlflow' where it is not associated with a value
+2026-02-25 19:14:09 [INFO    ] src.train | ============================================================
+2026-02-25 19:14:09 [INFO    ] src.train | STEP 4c - LSTM Experiment
+2026-02-25 19:14:11 [INFO    ] src.models.lstm_model | LSTM parent run started | device=cuda …
+2026-02-25 19:14:11 [INFO    ] src.models.lstm_model |   Grid combinations: 32
+2026-02-25 19:14:11 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq14_do0.0_wd0.0 on cuda …
+2026-02-25 19:14:12 [ERROR   ] src.train |   LSTM failed: cannot access local variable 'mlflow' where it is not associated with a value
