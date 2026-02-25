@@ -14,7 +14,7 @@ logging:
 mlflow:
   experiment_name: Ad_Sales_TimeSeries
   registry_model_name: Ad_Sales_Forecaster
-  tracking_uri: mlruns
+  tracking_uri: https://dagshub.com/vanshccmodi/Ad_revenue_pipeline.mlflow
 data:
   date_col: date
   target_col: revenue

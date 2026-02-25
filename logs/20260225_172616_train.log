@@ -1,0 +1,403 @@
+2026-02-25 17:26:16 [INFO    ] logger_setup | Logging initialised -> file: logs\20260225_172616_train.log
+2026-02-25 17:26:16 [INFO    ] logger_setup | Archive dir         -> C:\Users\modiv\Downloads\jjj\ad-sales-forecasting\logs\archive
+2026-02-25 17:26:16 [INFO    ] main | ********************************************************
+2026-02-25 17:26:16 [INFO    ] main | *   Ad Sales Forecasting - Training Pipeline           *
+2026-02-25 17:26:16 [INFO    ] main | ********************************************************
+2026-02-25 17:27:48 [INFO    ] src.train | Created MLflow experiment: 'Ad_Sales_TimeSeries' (id=0)
+2026-02-25 17:27:49 [INFO    ] src.train | ============================================================
+2026-02-25 17:27:49 [INFO    ] src.train | STEP 1 - Loading raw data
+2026-02-25 17:27:49 [INFO    ] src.data_loader | Loading raw data from: C:\Users\modiv\Downloads\jjj\ad-sales-forecasting\data\raw\global_ads_performance_dataset.csv
+2026-02-25 17:27:49 [INFO    ] src.data_loader |   Loaded 1,800 rows | Date range: 2024-01-01 -> 2024-12-30
+2026-02-25 17:27:49 [INFO    ] src.data_loader |   Daily aggregation -> 365 rows
+2026-02-25 17:27:49 [INFO    ] src.train |   Daily rows: 365
+2026-02-25 17:27:49 [INFO    ] src.train | STEP 2 - Feature engineering
+2026-02-25 17:27:49 [INFO    ] src.feature_engineering | Starting feature engineering …
+2026-02-25 17:27:49 [INFO    ] src.feature_engineering |   Feature engineering complete -> 43 features
+2026-02-25 17:27:49 [INFO    ] src.train | STEP 3 - Preprocessing (split + scale)
+2026-02-25 17:27:49 [INFO    ] src.preprocessing |   Split: train=255, val=54, test=56
+2026-02-25 17:27:49 [INFO    ] src.preprocessing |   Scalers saved to: data\processed/
+2026-02-25 17:27:49 [INFO    ] src.preprocessing |   Processed dataset saved to: data/processed/processed_ads.csv
+2026-02-25 17:27:49 [INFO    ] src.preprocessing |   Split: train=255, val=54, test=56
+2026-02-25 17:27:49 [INFO    ] src.preprocessing |   Scalers saved to: data\processed/
+2026-02-25 17:27:49 [INFO    ] src.preprocessing |   Processed dataset saved to: data/processed/processed_ads.csv
+2026-02-25 17:27:49 [INFO    ] src.train |   Processed snapshot saved -> data/processed/processed_ads.csv
+2026-02-25 17:27:49 [INFO    ] src.train | ============================================================
+2026-02-25 17:27:49 [INFO    ] src.train | STEP 4a - ARIMA Experiment
+2026-02-25 17:27:51 [INFO    ] src.models.arima_model | ARIMA parent run started …
+2026-02-25 17:27:51 [INFO    ] src.models.arima_model |   Grid combinations: 8
+2026-02-25 17:27:51 [INFO    ] src.models.arima_model |   Fitting ARIMA_p1_d1_q1 …
+2026-02-25 17:27:52 [INFO    ] src.evaluate |   [test] MAE=77193.0551 | RMSE=101103.2456 | MAPE=103.09% | R²=-0.0182
+2026-02-25 17:27:56 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\arima\ARIMA_p1_d1_q1\ARIMA_p1_d1_q1_predictions.png
+2026-02-25 17:27:57 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\arima\ARIMA_p1_d1_q1\ARIMA_p1_d1_q1_residuals.png
+2026-02-25 17:28:22 [INFO    ] src.models.arima_model |     ARIMA_p1_d1_q1 -> RMSE=101103.2456 | R²=-0.0182
+2026-02-25 17:28:23 [INFO    ] src.models.arima_model |   Fitting ARIMA_p1_d1_q1 …
+2026-02-25 17:28:24 [WARNING ] src.models.arima_model |     ARIMA(1,1,1) trend=c failed: In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, a constant cannot be included in an ARIMA(1, 1, 1) model, but including a linear trend, which would have the same effect as fitting a constant to the differenced data, is allowed.
+2026-02-25 17:28:25 [INFO    ] src.models.arima_model |   Fitting ARIMA_p1_d1_q2 …
+2026-02-25 17:28:27 [INFO    ] src.evaluate |   [test] MAE=77165.6758 | RMSE=101018.7577 | MAPE=103.16% | R²=-0.0165
+2026-02-25 17:28:30 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\arima\ARIMA_p1_d1_q2\ARIMA_p1_d1_q2_predictions.png
+2026-02-25 17:28:31 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\arima\ARIMA_p1_d1_q2\ARIMA_p1_d1_q2_residuals.png
+2026-02-25 17:28:53 [INFO    ] src.models.arima_model |     ARIMA_p1_d1_q2 -> RMSE=101018.7577 | R²=-0.0165
+2026-02-25 17:28:54 [INFO    ] src.models.arima_model |   Fitting ARIMA_p1_d1_q2 …
+2026-02-25 17:28:57 [WARNING ] src.models.arima_model |     ARIMA(1,1,2) trend=c failed: In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, a constant cannot be included in an ARIMA(1, 1, 1) model, but including a linear trend, which would have the same effect as fitting a constant to the differenced data, is allowed.
+2026-02-25 17:29:00 [INFO    ] src.models.arima_model |   Fitting ARIMA_p2_d1_q1 …
+2026-02-25 17:29:03 [INFO    ] src.evaluate |   [test] MAE=77106.8449 | RMSE=101021.7245 | MAPE=102.81% | R²=-0.0166
+2026-02-25 17:29:08 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\arima\ARIMA_p2_d1_q1\ARIMA_p2_d1_q1_predictions.png
+2026-02-25 17:29:09 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\arima\ARIMA_p2_d1_q1\ARIMA_p2_d1_q1_residuals.png
+2026-02-25 17:29:34 [INFO    ] src.models.arima_model |     ARIMA_p2_d1_q1 -> RMSE=101021.7245 | R²=-0.0166
+2026-02-25 17:29:35 [INFO    ] src.models.arima_model |   Fitting ARIMA_p2_d1_q1 …
+2026-02-25 17:29:36 [WARNING ] src.models.arima_model |     ARIMA(2,1,1) trend=c failed: In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, a constant cannot be included in an ARIMA(1, 1, 1) model, but including a linear trend, which would have the same effect as fitting a constant to the differenced data, is allowed.
+2026-02-25 17:29:37 [INFO    ] src.models.arima_model |   Fitting ARIMA_p2_d1_q2 …
+2026-02-25 17:29:40 [INFO    ] src.evaluate |   [test] MAE=76125.0158 | RMSE=100147.5010 | MAPE=102.56% | R²=0.0010
+2026-02-25 17:29:47 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\arima\ARIMA_p2_d1_q2\ARIMA_p2_d1_q2_predictions.png
+2026-02-25 17:29:48 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\arima\ARIMA_p2_d1_q2\ARIMA_p2_d1_q2_residuals.png
+2026-02-25 17:30:08 [INFO    ] src.models.arima_model |     ARIMA_p2_d1_q2 -> RMSE=100147.5010 | R²=0.0010
+2026-02-25 17:30:08 [INFO    ] src.models.arima_model |   Fitting ARIMA_p2_d1_q2 …
+2026-02-25 17:30:11 [WARNING ] src.models.arima_model |     ARIMA(2,1,2) trend=c failed: In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, a constant cannot be included in an ARIMA(1, 1, 1) model, but including a linear trend, which would have the same effect as fitting a constant to the differenced data, is allowed.
+2026-02-25 17:30:16 [INFO    ] src.models.arima_model | Best ARIMA -> ARIMA_p2_d1_q2 | RMSE=100147.5010
+2026-02-25 17:30:16 [INFO    ] src.train | ============================================================
+2026-02-25 17:30:16 [INFO    ] src.train | STEP 4b - SARIMAX Experiment
+2026-02-25 17:30:19 [INFO    ] src.models.sarimax_model | SARIMAX parent run started …
+2026-02-25 17:30:19 [INFO    ] src.models.sarimax_model |   Grid combinations: 16
+2026-02-25 17:30:19 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q1_P1_D1_Q1_s7 …
+2026-02-25 17:30:23 [INFO    ] src.evaluate |   [test] MAE=33179.7263 | RMSE=40623.0091 | MAPE=28.03% | R²=0.8356
+2026-02-25 17:30:38 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P1_D1_Q1_s7\SARIMAX_p1_d1_q1_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:30:38 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P1_D1_Q1_s7\SARIMAX_p1_d1_q1_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:31:08 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q1_P1_D1_Q1_s7 -> RMSE=40623.0091 | R²=0.8356
+2026-02-25 17:31:09 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q1_P1_D1_Q1_s7 …
+2026-02-25 17:31:12 [INFO    ] src.evaluate |   [test] MAE=56323.6243 | RMSE=72781.4620 | MAPE=64.05% | R²=0.4723
+2026-02-25 17:31:31 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P1_D1_Q1_s7\SARIMAX_p1_d1_q1_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:31:32 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P1_D1_Q1_s7\SARIMAX_p1_d1_q1_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:32:03 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q1_P1_D1_Q1_s7 -> RMSE=72781.4620 | R²=0.4723
+2026-02-25 17:32:04 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q1_P0_D1_Q1_s7 …
+2026-02-25 17:32:06 [INFO    ] src.evaluate |   [test] MAE=27339.4741 | RMSE=34189.5965 | MAPE=25.93% | R²=0.8836
+2026-02-25 17:32:27 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P0_D1_Q1_s7\SARIMAX_p1_d1_q1_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:32:27 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P0_D1_Q1_s7\SARIMAX_p1_d1_q1_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:32:59 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q1_P0_D1_Q1_s7 -> RMSE=34189.5965 | R²=0.8836
+2026-02-25 17:33:00 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q1_P0_D1_Q1_s7 …
+2026-02-25 17:33:03 [INFO    ] src.evaluate |   [test] MAE=80760.1285 | RMSE=101457.5066 | MAPE=91.46% | R²=-0.0254
+2026-02-25 17:33:22 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P0_D1_Q1_s7\SARIMAX_p1_d1_q1_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:33:22 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q1_P0_D1_Q1_s7\SARIMAX_p1_d1_q1_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:33:55 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q1_P0_D1_Q1_s7 -> RMSE=101457.5066 | R²=-0.0254
+2026-02-25 17:33:57 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q2_P1_D1_Q1_s7 …
+2026-02-25 17:34:00 [INFO    ] src.evaluate |   [test] MAE=29111.3160 | RMSE=35443.5740 | MAPE=26.84% | R²=0.8749
+2026-02-25 17:34:23 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P1_D1_Q1_s7\SARIMAX_p1_d1_q2_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:34:24 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P1_D1_Q1_s7\SARIMAX_p1_d1_q2_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:35:15 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q2_P1_D1_Q1_s7 -> RMSE=35443.5740 | R²=0.8749
+2026-02-25 17:35:16 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q2_P1_D1_Q1_s7 …
+2026-02-25 17:35:20 [INFO    ] src.evaluate |   [test] MAE=29712.7706 | RMSE=39099.6827 | MAPE=31.72% | R²=0.8477
+2026-02-25 17:36:10 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P1_D1_Q1_s7\SARIMAX_p1_d1_q2_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:36:11 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P1_D1_Q1_s7\SARIMAX_p1_d1_q2_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:36:48 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q2_P1_D1_Q1_s7 -> RMSE=39099.6827 | R²=0.8477
+2026-02-25 17:36:49 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q2_P0_D1_Q1_s7 …
+2026-02-25 17:36:53 [INFO    ] src.evaluate |   [test] MAE=28259.8877 | RMSE=34786.8245 | MAPE=26.08% | R²=0.8795
+2026-02-25 17:37:19 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P0_D1_Q1_s7\SARIMAX_p1_d1_q2_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:37:19 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P0_D1_Q1_s7\SARIMAX_p1_d1_q2_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:37:45 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q2_P0_D1_Q1_s7 -> RMSE=34786.8245 | R²=0.8795
+2026-02-25 17:37:46 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p1_d1_q2_P0_D1_Q1_s7 …
+2026-02-25 17:37:50 [INFO    ] src.evaluate |   [test] MAE=33627.2612 | RMSE=44491.4874 | MAPE=40.00% | R²=0.8028
+2026-02-25 17:38:04 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P0_D1_Q1_s7\SARIMAX_p1_d1_q2_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:38:05 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p1_d1_q2_P0_D1_Q1_s7\SARIMAX_p1_d1_q2_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:38:32 [INFO    ] src.models.sarimax_model |     SARIMAX_p1_d1_q2_P0_D1_Q1_s7 -> RMSE=44491.4874 | R²=0.8028
+2026-02-25 17:38:33 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q1_P1_D1_Q1_s7 …
+2026-02-25 17:38:37 [INFO    ] src.evaluate |   [test] MAE=33107.1640 | RMSE=40504.6168 | MAPE=27.94% | R²=0.8366
+2026-02-25 17:38:50 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P1_D1_Q1_s7\SARIMAX_p2_d1_q1_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:38:51 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P1_D1_Q1_s7\SARIMAX_p2_d1_q1_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:39:16 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q1_P1_D1_Q1_s7 -> RMSE=40504.6168 | R²=0.8366
+2026-02-25 17:39:17 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q1_P1_D1_Q1_s7 …
+2026-02-25 17:39:20 [INFO    ] src.evaluate |   [test] MAE=54181.1020 | RMSE=70101.5512 | MAPE=61.82% | R²=0.5105
+2026-02-25 17:39:36 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P1_D1_Q1_s7\SARIMAX_p2_d1_q1_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:39:36 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P1_D1_Q1_s7\SARIMAX_p2_d1_q1_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:40:16 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q1_P1_D1_Q1_s7 -> RMSE=70101.5512 | R²=0.5105
+2026-02-25 17:40:17 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q1_P0_D1_Q1_s7 …
+2026-02-25 17:40:20 [INFO    ] src.evaluate |   [test] MAE=31417.1481 | RMSE=39438.6420 | MAPE=25.29% | R²=0.8451
+2026-02-25 17:40:42 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P0_D1_Q1_s7\SARIMAX_p2_d1_q1_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:40:42 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P0_D1_Q1_s7\SARIMAX_p2_d1_q1_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:41:31 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q1_P0_D1_Q1_s7 -> RMSE=39438.6420 | R²=0.8451
+2026-02-25 17:41:32 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q1_P0_D1_Q1_s7 …
+2026-02-25 17:41:36 [INFO    ] src.evaluate |   [test] MAE=75399.1609 | RMSE=94878.7546 | MAPE=85.98% | R²=0.1033
+2026-02-25 17:41:52 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P0_D1_Q1_s7\SARIMAX_p2_d1_q1_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:41:52 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q1_P0_D1_Q1_s7\SARIMAX_p2_d1_q1_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:42:40 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q1_P0_D1_Q1_s7 -> RMSE=94878.7546 | R²=0.1033
+2026-02-25 17:42:41 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q2_P1_D1_Q1_s7 …
+2026-02-25 17:42:45 [INFO    ] src.evaluate |   [test] MAE=47309.1689 | RMSE=57040.9179 | MAPE=60.13% | R²=0.6759
+2026-02-25 17:43:19 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P1_D1_Q1_s7\SARIMAX_p2_d1_q2_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:43:19 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P1_D1_Q1_s7\SARIMAX_p2_d1_q2_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:44:08 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q2_P1_D1_Q1_s7 -> RMSE=57040.9179 | R²=0.6759
+2026-02-25 17:44:09 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q2_P1_D1_Q1_s7 …
+2026-02-25 17:44:12 [INFO    ] src.evaluate |   [test] MAE=154816.6756 | RMSE=174605.1238 | MAPE=176.90% | R²=-2.0368
+2026-02-25 17:44:48 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P1_D1_Q1_s7\SARIMAX_p2_d1_q2_P1_D1_Q1_s7_predictions.png
+2026-02-25 17:44:49 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P1_D1_Q1_s7\SARIMAX_p2_d1_q2_P1_D1_Q1_s7_residuals.png
+2026-02-25 17:45:25 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q2_P1_D1_Q1_s7 -> RMSE=174605.1238 | R²=-2.0368
+2026-02-25 17:45:26 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q2_P0_D1_Q1_s7 …
+2026-02-25 17:45:30 [INFO    ] src.evaluate |   [test] MAE=76583.4036 | RMSE=84224.7472 | MAPE=98.07% | R²=0.2934
+2026-02-25 17:45:48 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P0_D1_Q1_s7\SARIMAX_p2_d1_q2_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:45:48 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P0_D1_Q1_s7\SARIMAX_p2_d1_q2_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:46:21 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q2_P0_D1_Q1_s7 -> RMSE=84224.7472 | R²=0.2934
+2026-02-25 17:46:22 [INFO    ] src.models.sarimax_model |   Fitting SARIMAX_p2_d1_q2_P0_D1_Q1_s7 …
+2026-02-25 17:46:26 [INFO    ] src.evaluate |   [test] MAE=231082.4149 | RMSE=257411.2999 | MAPE=262.48% | R²=-5.6003
+2026-02-25 17:46:52 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P0_D1_Q1_s7\SARIMAX_p2_d1_q2_P0_D1_Q1_s7_predictions.png
+2026-02-25 17:46:53 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\sarimax\SARIMAX_p2_d1_q2_P0_D1_Q1_s7\SARIMAX_p2_d1_q2_P0_D1_Q1_s7_residuals.png
+2026-02-25 17:47:25 [INFO    ] src.models.sarimax_model |     SARIMAX_p2_d1_q2_P0_D1_Q1_s7 -> RMSE=257411.2999 | R²=-5.6003
+2026-02-25 17:47:27 [INFO    ] src.models.sarimax_model | Best SARIMAX -> SARIMAX_p1_d1_q1_P0_D1_Q1_s7 | RMSE=34189.5965
+2026-02-25 17:47:27 [INFO    ] src.train | ============================================================
+2026-02-25 17:47:27 [INFO    ] src.train | STEP 4c - LSTM Experiment
+2026-02-25 17:47:28 [INFO    ] src.models.lstm_model | LSTM parent run started | device=cuda …
+2026-02-25 17:47:28 [INFO    ] src.models.lstm_model |   Grid combinations: 32
+2026-02-25 17:47:28 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq14_do0.0_wd0.0 on cuda …
+2026-02-25 17:47:35 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041775 | val_loss=0.037258
+2026-02-25 17:47:35 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:47:39 [INFO    ] src.evaluate |   [test] MAE=73236.5530 | RMSE=96934.2584 | MAPE=83.46% | R²=-0.0203
+2026-02-25 17:47:43 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0_predictions.png
+2026-02-25 17:47:43 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0_residuals.png
+2026-02-25 17:48:09 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq14_do0.0_wd0.0 -> RMSE=96934.2584 | R²=-0.0203
+2026-02-25 17:48:10 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq14_do0.0_wd0.0001 on cuda …
+2026-02-25 17:48:12 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041909 | val_loss=0.036680
+2026-02-25 17:48:12 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:48:17 [INFO    ] src.evaluate |   [test] MAE=73244.6652 | RMSE=96812.7600 | MAPE=83.92% | R²=-0.0178
+2026-02-25 17:48:22 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0001\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0001_predictions.png
+2026-02-25 17:48:22 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0001\LSTM_lr0.001_bs32_seq14_do0.0_wd0.0001_residuals.png
+2026-02-25 17:48:52 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq14_do0.0_wd0.0001 -> RMSE=96812.7600 | R²=-0.0178
+2026-02-25 17:48:53 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq14_do0.2_wd0.0 on cuda …
+2026-02-25 17:48:56 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041633 | val_loss=0.037424
+2026-02-25 17:48:56 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:48:59 [INFO    ] src.evaluate |   [test] MAE=72765.1013 | RMSE=97150.9533 | MAPE=81.93% | R²=-0.0249
+2026-02-25 17:49:04 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0_predictions.png
+2026-02-25 17:49:04 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0_residuals.png
+2026-02-25 17:49:32 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq14_do0.2_wd0.0 -> RMSE=97150.9533 | R²=-0.0249
+2026-02-25 17:49:33 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq14_do0.2_wd0.0001 on cuda …
+2026-02-25 17:49:35 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041872 | val_loss=0.037531
+2026-02-25 17:49:35 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:49:42 [INFO    ] src.evaluate |   [test] MAE=73170.3464 | RMSE=97269.7747 | MAPE=82.64% | R²=-0.0274
+2026-02-25 17:49:46 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0001\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0001_predictions.png
+2026-02-25 17:49:46 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0001\LSTM_lr0.001_bs32_seq14_do0.2_wd0.0001_residuals.png
+2026-02-25 17:50:14 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq14_do0.2_wd0.0001 -> RMSE=97269.7747 | R²=-0.0274
+2026-02-25 17:50:15 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq21_do0.0_wd0.0 on cuda …
+2026-02-25 17:50:17 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041943 | val_loss=0.064531
+2026-02-25 17:50:17 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:50:24 [INFO    ] src.evaluate |   [test] MAE=77989.6519 | RMSE=104192.8145 | MAPE=84.53% | R²=-0.0759
+2026-02-25 17:50:28 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0_predictions.png
+2026-02-25 17:50:28 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0_residuals.png
+2026-02-25 17:50:56 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq21_do0.0_wd0.0 -> RMSE=104192.8145 | R²=-0.0759
+2026-02-25 17:50:57 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq21_do0.0_wd0.0001 on cuda …
+2026-02-25 17:50:59 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041957 | val_loss=0.062340
+2026-02-25 17:50:59 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:51:05 [INFO    ] src.evaluate |   [test] MAE=78014.1649 | RMSE=103914.1494 | MAPE=85.45% | R²=-0.0702
+2026-02-25 17:51:10 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0001\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0001_predictions.png
+2026-02-25 17:51:10 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0001\LSTM_lr0.001_bs32_seq21_do0.0_wd0.0001_residuals.png
+2026-02-25 17:51:39 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq21_do0.0_wd0.0001 -> RMSE=103914.1494 | R²=-0.0702
+2026-02-25 17:51:40 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq21_do0.2_wd0.0 on cuda …
+2026-02-25 17:51:42 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041961 | val_loss=0.060948
+2026-02-25 17:51:42 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:51:48 [INFO    ] src.evaluate |   [test] MAE=77880.7364 | RMSE=103518.9966 | MAPE=86.07% | R²=-0.0621
+2026-02-25 17:51:52 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0_predictions.png
+2026-02-25 17:51:52 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0_residuals.png
+2026-02-25 17:52:21 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq21_do0.2_wd0.0 -> RMSE=103518.9966 | R²=-0.0621
+2026-02-25 17:52:21 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs32_seq21_do0.2_wd0.0001 on cuda …
+2026-02-25 17:52:23 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041754 | val_loss=0.062816
+2026-02-25 17:52:23 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:52:29 [INFO    ] src.evaluate |   [test] MAE=77891.6871 | RMSE=103703.7010 | MAPE=85.50% | R²=-0.0659
+2026-02-25 17:52:34 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0001\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0001_predictions.png
+2026-02-25 17:52:34 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0001\LSTM_lr0.001_bs32_seq21_do0.2_wd0.0001_residuals.png
+2026-02-25 17:53:05 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs32_seq21_do0.2_wd0.0001 -> RMSE=103703.7010 | R²=-0.0659
+2026-02-25 17:53:05 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq14_do0.0_wd0.0 on cuda …
+2026-02-25 17:53:07 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041640 | val_loss=0.040589
+2026-02-25 17:53:07 [INFO    ] src.models.lstm_model |     Early stopping at epoch 10
+2026-02-25 17:53:13 [INFO    ] src.evaluate |   [test] MAE=72878.8817 | RMSE=97390.9398 | MAPE=81.93% | R²=-0.0300
+2026-02-25 17:53:18 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0_predictions.png
+2026-02-25 17:53:19 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0_residuals.png
+2026-02-25 17:53:47 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq14_do0.0_wd0.0 -> RMSE=97390.9398 | R²=-0.0300
+2026-02-25 17:53:47 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq14_do0.0_wd0.0001 on cuda …
+2026-02-25 17:53:50 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041644 | val_loss=0.040948
+2026-02-25 17:53:50 [INFO    ] src.models.lstm_model |     Epoch  14/50 | train_loss=0.041798 | val_loss=0.040460
+2026-02-25 17:53:50 [INFO    ] src.models.lstm_model |     Early stopping at epoch 14
+2026-02-25 17:54:01 [INFO    ] src.evaluate |   [test] MAE=73219.8667 | RMSE=96778.6879 | MAPE=84.07% | R²=-0.0171
+2026-02-25 17:54:07 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0001\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0001_predictions.png
+2026-02-25 17:54:08 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0001\LSTM_lr0.001_bs64_seq14_do0.0_wd0.0001_residuals.png
+2026-02-25 17:54:34 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq14_do0.0_wd0.0001 -> RMSE=96778.6879 | R²=-0.0171
+2026-02-25 17:54:35 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq14_do0.2_wd0.0 on cuda …
+2026-02-25 17:54:36 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.042095 | val_loss=0.041306
+2026-02-25 17:54:36 [INFO    ] src.models.lstm_model |     Epoch  13/50 | train_loss=0.042071 | val_loss=0.040323
+2026-02-25 17:54:36 [INFO    ] src.models.lstm_model |     Early stopping at epoch 13
+2026-02-25 17:54:48 [INFO    ] src.evaluate |   [test] MAE=73766.5912 | RMSE=96715.1981 | MAPE=85.66% | R²=-0.0157
+2026-02-25 17:54:54 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0_predictions.png
+2026-02-25 17:54:54 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0_residuals.png
+2026-02-25 17:55:25 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq14_do0.2_wd0.0 -> RMSE=96715.1981 | R²=-0.0157
+2026-02-25 17:55:26 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq14_do0.2_wd0.0001 on cuda …
+2026-02-25 17:55:27 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.042138 | val_loss=0.041508
+2026-02-25 17:55:28 [INFO    ] src.models.lstm_model |     Epoch  13/50 | train_loss=0.041954 | val_loss=0.040343
+2026-02-25 17:55:28 [INFO    ] src.models.lstm_model |     Early stopping at epoch 13
+2026-02-25 17:55:35 [INFO    ] src.evaluate |   [test] MAE=74022.4566 | RMSE=96529.4128 | MAPE=86.86% | R²=-0.0118
+2026-02-25 17:55:40 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0001\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0001_predictions.png
+2026-02-25 17:55:41 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0001\LSTM_lr0.001_bs64_seq14_do0.2_wd0.0001_residuals.png
+2026-02-25 17:56:09 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq14_do0.2_wd0.0001 -> RMSE=96529.4128 | R²=-0.0118
+2026-02-25 17:56:10 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq21_do0.0_wd0.0 on cuda …
+2026-02-25 17:56:12 [INFO    ] src.models.lstm_model |     Epoch   9/50 | train_loss=0.041274 | val_loss=0.041120
+2026-02-25 17:56:12 [INFO    ] src.models.lstm_model |     Early stopping at epoch 9
+2026-02-25 17:56:18 [INFO    ] src.evaluate |   [test] MAE=77932.5854 | RMSE=102626.5390 | MAPE=88.72% | R²=-0.0438
+2026-02-25 17:56:23 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0_predictions.png
+2026-02-25 17:56:24 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0_residuals.png
+2026-02-25 17:56:53 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq21_do0.0_wd0.0 -> RMSE=102626.5390 | R²=-0.0438
+2026-02-25 17:56:54 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq21_do0.0_wd0.0001 on cuda …
+2026-02-25 17:56:56 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041368 | val_loss=0.043770
+2026-02-25 17:56:56 [INFO    ] src.models.lstm_model |     Epoch  14/50 | train_loss=0.041183 | val_loss=0.041249
+2026-02-25 17:56:56 [INFO    ] src.models.lstm_model |     Early stopping at epoch 14
+2026-02-25 17:57:07 [INFO    ] src.evaluate |   [test] MAE=78780.6017 | RMSE=103088.5358 | MAPE=89.79% | R²=-0.0533
+2026-02-25 17:57:12 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0001\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0001_predictions.png
+2026-02-25 17:57:13 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0001\LSTM_lr0.001_bs64_seq21_do0.0_wd0.0001_residuals.png
+2026-02-25 17:57:41 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq21_do0.0_wd0.0001 -> RMSE=103088.5358 | R²=-0.0533
+2026-02-25 17:57:42 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq21_do0.2_wd0.0 on cuda …
+2026-02-25 17:57:44 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041181 | val_loss=0.041580
+2026-02-25 17:57:44 [INFO    ] src.models.lstm_model |     Epoch  15/50 | train_loss=0.041231 | val_loss=0.041537
+2026-02-25 17:57:44 [INFO    ] src.models.lstm_model |     Early stopping at epoch 15
+2026-02-25 17:57:55 [INFO    ] src.evaluate |   [test] MAE=78348.6794 | RMSE=103687.8050 | MAPE=87.36% | R²=-0.0655
+2026-02-25 17:58:02 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0_predictions.png
+2026-02-25 17:58:02 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0_residuals.png
+2026-02-25 17:58:29 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq21_do0.2_wd0.0 -> RMSE=103687.8050 | R²=-0.0655
+2026-02-25 17:58:30 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.001_bs64_seq21_do0.2_wd0.0001 on cuda …
+2026-02-25 17:58:32 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041286 | val_loss=0.041625
+2026-02-25 17:58:32 [INFO    ] src.models.lstm_model |     Epoch  15/50 | train_loss=0.041186 | val_loss=0.041965
+2026-02-25 17:58:32 [INFO    ] src.models.lstm_model |     Early stopping at epoch 15
+2026-02-25 17:58:45 [INFO    ] src.evaluate |   [test] MAE=78171.9372 | RMSE=103733.5981 | MAPE=86.37% | R²=-0.0665
+2026-02-25 17:58:50 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0001\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0001_predictions.png
+2026-02-25 17:58:50 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0001\LSTM_lr0.001_bs64_seq21_do0.2_wd0.0001_residuals.png
+2026-02-25 17:59:19 [INFO    ] src.models.lstm_model |     LSTM_lr0.001_bs64_seq21_do0.2_wd0.0001 -> RMSE=103733.5981 | R²=-0.0665
+2026-02-25 17:59:19 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq14_do0.0_wd0.0 on cuda …
+2026-02-25 17:59:21 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041320 | val_loss=0.038702
+2026-02-25 17:59:21 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 17:59:26 [INFO    ] src.evaluate |   [test] MAE=73054.9189 | RMSE=97256.6160 | MAPE=80.20% | R²=-0.0271
+2026-02-25 17:59:33 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0_predictions.png
+2026-02-25 17:59:34 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0_residuals.png
+2026-02-25 18:00:02 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq14_do0.0_wd0.0 -> RMSE=97256.6160 | R²=-0.0271
+2026-02-25 18:00:03 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq14_do0.0_wd0.0001 on cuda …
+2026-02-25 18:00:05 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041548 | val_loss=0.039152
+2026-02-25 18:00:05 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 18:00:08 [INFO    ] src.evaluate |   [test] MAE=71720.2309 | RMSE=96649.6196 | MAPE=77.87% | R²=-0.0144
+2026-02-25 18:00:17 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0001\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0001_predictions.png
+2026-02-25 18:00:17 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0001\LSTM_lr0.01_bs32_seq14_do0.0_wd0.0001_residuals.png
+2026-02-25 18:00:43 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq14_do0.0_wd0.0001 -> RMSE=96649.6196 | R²=-0.0144
+2026-02-25 18:00:44 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq14_do0.2_wd0.0 on cuda …
+2026-02-25 18:00:46 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.040998 | val_loss=0.039261
+2026-02-25 18:00:46 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 18:00:51 [INFO    ] src.evaluate |   [test] MAE=72747.6949 | RMSE=97228.8321 | MAPE=78.90% | R²=-0.0266
+2026-02-25 18:00:56 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0_predictions.png
+2026-02-25 18:00:56 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0_residuals.png
+2026-02-25 18:01:25 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq14_do0.2_wd0.0 -> RMSE=97228.8321 | R²=-0.0266
+2026-02-25 18:01:26 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq14_do0.2_wd0.0001 on cuda …
+2026-02-25 18:01:28 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.040277 | val_loss=0.039049
+2026-02-25 18:01:28 [INFO    ] src.models.lstm_model |     Early stopping at epoch 10
+2026-02-25 18:01:34 [INFO    ] src.evaluate |   [test] MAE=71502.3443 | RMSE=95093.8960 | MAPE=78.13% | R²=0.0180
+2026-02-25 18:01:39 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0001\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0001_predictions.png
+2026-02-25 18:01:40 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0001\LSTM_lr0.01_bs32_seq14_do0.2_wd0.0001_residuals.png
+2026-02-25 18:02:09 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq14_do0.2_wd0.0001 -> RMSE=95093.8960 | R²=0.0180
+2026-02-25 18:02:10 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq21_do0.0_wd0.0 on cuda …
+2026-02-25 18:02:12 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.040203 | val_loss=0.070521
+2026-02-25 18:02:12 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 18:02:16 [INFO    ] src.evaluate |   [test] MAE=79664.3146 | RMSE=105029.0354 | MAPE=82.71% | R²=-0.0933
+2026-02-25 18:02:21 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0_predictions.png
+2026-02-25 18:02:21 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0_residuals.png
+2026-02-25 18:02:50 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq21_do0.0_wd0.0 -> RMSE=105029.0354 | R²=-0.0933
+2026-02-25 18:02:51 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq21_do0.0_wd0.0001 on cuda …
+2026-02-25 18:02:53 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041789 | val_loss=0.064064
+2026-02-25 18:02:53 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 18:02:58 [INFO    ] src.evaluate |   [test] MAE=77770.8193 | RMSE=103773.3533 | MAPE=82.29% | R²=-0.0673
+2026-02-25 18:03:03 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0001\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0001_predictions.png
+2026-02-25 18:03:04 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0001\LSTM_lr0.01_bs32_seq21_do0.0_wd0.0001_residuals.png
+2026-02-25 18:03:32 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq21_do0.0_wd0.0001 -> RMSE=103773.3533 | R²=-0.0673
+2026-02-25 18:03:32 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq21_do0.2_wd0.0 on cuda …
+2026-02-25 18:03:35 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041701 | val_loss=0.068234
+2026-02-25 18:03:35 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 18:03:40 [INFO    ] src.evaluate |   [test] MAE=78968.2260 | RMSE=105557.2211 | MAPE=83.84% | R²=-0.1043
+2026-02-25 18:03:46 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0_predictions.png
+2026-02-25 18:03:46 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0_residuals.png
+2026-02-25 18:04:14 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq21_do0.2_wd0.0 -> RMSE=105557.2211 | R²=-0.1043
+2026-02-25 18:04:15 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs32_seq21_do0.2_wd0.0001 on cuda …
+2026-02-25 18:04:17 [INFO    ] src.models.lstm_model |     Epoch   8/50 | train_loss=0.041607 | val_loss=0.067153
+2026-02-25 18:04:17 [INFO    ] src.models.lstm_model |     Early stopping at epoch 8
+2026-02-25 18:04:22 [INFO    ] src.evaluate |   [test] MAE=77533.8855 | RMSE=103809.5945 | MAPE=80.17% | R²=-0.0680
+2026-02-25 18:04:28 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0001\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0001_predictions.png
+2026-02-25 18:04:28 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0001\LSTM_lr0.01_bs32_seq21_do0.2_wd0.0001_residuals.png
+2026-02-25 18:04:56 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs32_seq21_do0.2_wd0.0001 -> RMSE=103809.5945 | R²=-0.0680
+2026-02-25 18:04:57 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq14_do0.0_wd0.0 on cuda …
+2026-02-25 18:04:59 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041227 | val_loss=0.041451
+2026-02-25 18:04:59 [INFO    ] src.models.lstm_model |     Epoch  15/50 | train_loss=0.040943 | val_loss=0.040852
+2026-02-25 18:04:59 [INFO    ] src.models.lstm_model |     Early stopping at epoch 15
+2026-02-25 18:05:11 [INFO    ] src.evaluate |   [test] MAE=73185.8495 | RMSE=96091.1737 | MAPE=81.44% | R²=-0.0027
+2026-02-25 18:05:16 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0_predictions.png
+2026-02-25 18:05:17 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0_residuals.png
+2026-02-25 18:05:45 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq14_do0.0_wd0.0 -> RMSE=96091.1737 | R²=-0.0027
+2026-02-25 18:05:46 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq14_do0.0_wd0.0001 on cuda …
+2026-02-25 18:05:48 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.040970 | val_loss=0.041749
+2026-02-25 18:05:48 [INFO    ] src.models.lstm_model |     Epoch  20/50 | train_loss=0.040229 | val_loss=0.040931
+2026-02-25 18:05:48 [INFO    ] src.models.lstm_model |     Epoch  23/50 | train_loss=0.039960 | val_loss=0.041062
+2026-02-25 18:05:48 [INFO    ] src.models.lstm_model |     Early stopping at epoch 23
+2026-02-25 18:06:08 [INFO    ] src.evaluate |   [test] MAE=72334.1855 | RMSE=95448.1687 | MAPE=79.25% | R²=0.0107
+2026-02-25 18:06:20 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0001\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0001_predictions.png
+2026-02-25 18:06:21 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0001\LSTM_lr0.01_bs64_seq14_do0.0_wd0.0001_residuals.png
+2026-02-25 18:06:44 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq14_do0.0_wd0.0001 -> RMSE=95448.1687 | R²=0.0107
+2026-02-25 18:06:45 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq14_do0.2_wd0.0 on cuda …
+2026-02-25 18:06:47 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041571 | val_loss=0.041122
+2026-02-25 18:06:47 [INFO    ] src.models.lstm_model |     Epoch  20/50 | train_loss=0.041269 | val_loss=0.040944
+2026-02-25 18:06:47 [INFO    ] src.models.lstm_model |     Early stopping at epoch 20
+2026-02-25 18:07:02 [INFO    ] src.evaluate |   [test] MAE=73434.7266 | RMSE=96874.0809 | MAPE=81.45% | R²=-0.0191
+2026-02-25 18:07:08 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0_predictions.png
+2026-02-25 18:07:08 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0_residuals.png
+2026-02-25 18:07:38 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq14_do0.2_wd0.0 -> RMSE=96874.0809 | R²=-0.0191
+2026-02-25 18:07:39 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq14_do0.2_wd0.0001 on cuda …
+2026-02-25 18:07:41 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.041337 | val_loss=0.040819
+2026-02-25 18:07:41 [INFO    ] src.models.lstm_model |     Epoch  20/50 | train_loss=0.040373 | val_loss=0.040290
+2026-02-25 18:07:41 [INFO    ] src.models.lstm_model |     Epoch  23/50 | train_loss=0.039762 | val_loss=0.040140
+2026-02-25 18:07:41 [INFO    ] src.models.lstm_model |     Early stopping at epoch 23
+2026-02-25 18:07:59 [INFO    ] src.evaluate |   [test] MAE=72103.9741 | RMSE=94526.9305 | MAPE=81.45% | R²=0.0297
+2026-02-25 18:08:27 [WARNING ] urllib3.connectionpool | Retrying (JitteredRetry(total=6, connect=7, read=7, redirect=7, status=7)) after connection broken by 'SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:2427)'))': /vanshccmodi/Ad_revenue_pipeline.mlflow/api/2.0/mlflow-artifacts/artifacts/bf755f83b1184d249dd6b0b1e56ccb9b/e0319a4270c844228601c5e5bc061185/artifacts/model/lstm_model.pt
+2026-02-25 18:09:04 [WARNING ] urllib3.connectionpool | Retrying (JitteredRetry(total=5, connect=7, read=7, redirect=7, status=7)) after connection broken by 'SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:2427)'))': /vanshccmodi/Ad_revenue_pipeline.mlflow/api/2.0/mlflow-artifacts/artifacts/bf755f83b1184d249dd6b0b1e56ccb9b/e0319a4270c844228601c5e5bc061185/artifacts/model/lstm_model.pt
+2026-02-25 18:09:09 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0001\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0001_predictions.png
+2026-02-25 18:09:09 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0001\LSTM_lr0.01_bs64_seq14_do0.2_wd0.0001_residuals.png
+2026-02-25 18:09:33 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq14_do0.2_wd0.0001 -> RMSE=94526.9305 | R²=0.0297
+2026-02-25 18:09:34 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq21_do0.0_wd0.0 on cuda …
+2026-02-25 18:09:36 [INFO    ] src.models.lstm_model |     Epoch   9/50 | train_loss=0.041342 | val_loss=0.041597
+2026-02-25 18:09:36 [INFO    ] src.models.lstm_model |     Early stopping at epoch 9
+2026-02-25 18:09:40 [INFO    ] src.evaluate |   [test] MAE=77393.2588 | RMSE=101607.2626 | MAPE=87.93% | R²=-0.0232
+2026-02-25 18:09:44 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0_predictions.png
+2026-02-25 18:09:45 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0_residuals.png
+2026-02-25 18:10:12 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq21_do0.0_wd0.0 -> RMSE=101607.2626 | R²=-0.0232
+2026-02-25 18:10:12 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq21_do0.0_wd0.0001 on cuda …
+2026-02-25 18:10:14 [INFO    ] src.models.lstm_model |     Epoch   9/50 | train_loss=0.041234 | val_loss=0.041589
+2026-02-25 18:10:14 [INFO    ] src.models.lstm_model |     Early stopping at epoch 9
+2026-02-25 18:10:21 [INFO    ] src.evaluate |   [test] MAE=78035.1158 | RMSE=101665.1110 | MAPE=87.98% | R²=-0.0244
+2026-02-25 18:10:26 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0001\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0001_predictions.png
+2026-02-25 18:10:26 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0001\LSTM_lr0.01_bs64_seq21_do0.0_wd0.0001_residuals.png
+2026-02-25 18:10:54 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq21_do0.0_wd0.0001 -> RMSE=101665.1110 | R²=-0.0244
+2026-02-25 18:10:55 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq21_do0.2_wd0.0 on cuda …
+2026-02-25 18:10:57 [INFO    ] src.models.lstm_model |     Epoch  10/50 | train_loss=0.040533 | val_loss=0.042756
+2026-02-25 18:10:57 [INFO    ] src.models.lstm_model |     Epoch  12/50 | train_loss=0.040805 | val_loss=0.042272
+2026-02-25 18:10:57 [INFO    ] src.models.lstm_model |     Early stopping at epoch 12
+2026-02-25 18:11:07 [INFO    ] src.evaluate |   [test] MAE=78000.9951 | RMSE=103058.1764 | MAPE=85.11% | R²=-0.0526
+2026-02-25 18:11:11 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0_predictions.png
+2026-02-25 18:11:11 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0_residuals.png
+2026-02-25 18:11:40 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq21_do0.2_wd0.0 -> RMSE=103058.1764 | R²=-0.0526
+2026-02-25 18:11:41 [INFO    ] src.models.lstm_model |   Fitting LSTM_lr0.01_bs64_seq21_do0.2_wd0.0001 on cuda …
+2026-02-25 18:11:43 [INFO    ] src.models.lstm_model |     Epoch   9/50 | train_loss=0.040961 | val_loss=0.041450
+2026-02-25 18:11:43 [INFO    ] src.models.lstm_model |     Early stopping at epoch 9
+2026-02-25 18:11:50 [INFO    ] src.evaluate |   [test] MAE=77864.6331 | RMSE=101842.9122 | MAPE=87.98% | R²=-0.0280
+2026-02-25 18:11:56 [INFO    ] src.evaluate |   Prediction plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0001\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0001_predictions.png
+2026-02-25 18:11:56 [INFO    ] src.evaluate |   Residual plot saved -> artifacts\lstm\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0001\LSTM_lr0.01_bs64_seq21_do0.2_wd0.0001_residuals.png
+2026-02-25 18:12:22 [INFO    ] src.models.lstm_model |     LSTM_lr0.01_bs64_seq21_do0.2_wd0.0001 -> RMSE=101842.9122 | R²=-0.0280
+2026-02-25 18:12:24 [INFO    ] src.models.lstm_model | Best LSTM -> LSTM_lr0.01_bs64_seq14_do0.2_wd0.0001 | RMSE=94526.9305
+2026-02-25 18:12:24 [INFO    ] src.train | ============================================================
+2026-02-25 18:12:24 [INFO    ] src.train | STEP 5 - Selecting best model
+2026-02-25 18:12:24 [INFO    ] src.train | ============================================================
+2026-02-25 18:12:24 [INFO    ] src.train |   OVERALL BEST -> SARIMAX | SARIMAX_p1_d1_q1_P0_D1_Q1_s7
+2026-02-25 18:12:24 [INFO    ] src.train |   RMSE  : 34189.5965
+2026-02-25 18:12:24 [INFO    ] src.train |   MAE   : 27339.4741
+2026-02-25 18:12:24 [INFO    ] src.train |   MAPE  : 25.93%
+2026-02-25 18:12:24 [INFO    ] src.train |   R²    : 0.8836
+2026-02-25 18:12:24 [INFO    ] src.train | ============================================================
+2026-02-25 18:12:24 [INFO    ] src.train | Model comparison:
+2026-02-25 18:12:24 [INFO    ] src.train |   ARIMA      RMSE=100147.5010 R²=0.0010
+2026-02-25 18:12:24 [INFO    ] src.train |   SARIMAX    RMSE=34189.5965 R²=0.8836
+2026-02-25 18:12:24 [INFO    ] src.train |   LSTM       RMSE=94526.9305 R²=0.0297
+2026-02-25 18:12:24 [INFO    ] src.train | STEP 6 - Registering best model
+2026-02-25 18:12:25 [INFO    ] src.train |   Registry model 'Ad_Sales_Forecaster' created.
+2026-02-25 18:12:26 [INFO    ] src.train |   Model version created: 1
+2026-02-25 18:12:28 [INFO    ] src.train |   Model v1 -> Staging ✓
+2026-02-25 18:12:28 [INFO    ] src.train | Training pipeline complete ✓
