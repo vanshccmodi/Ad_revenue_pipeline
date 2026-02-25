@@ -1,0 +1,22 @@
+# Python virtual environment
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs and Data - Excluding these from typical Git tracking
+# Uncomment mlruns/ and artifacts/ if you want to push them via Git LFS
+# mlruns/
+# artifacts/
+mlruns/
+artifacts/
+
+# Local configuration
+.env
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# If pushing datasets, usually ignore large raw data
+data/raw/

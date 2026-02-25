@@ -1,0 +1,92 @@
+project:
+  name: Ad Sales Forecasting
+  seed: 42
+  target_col: revenue
+paths:
+  raw_data: data/raw/global_ads_performance_dataset.csv
+  processed_data: data/processed/processed_ads.csv
+  mlruns_dir: mlruns
+  artifacts_dir: artifacts
+logging:
+  log_dir: logs
+  max_log_files: 5
+  level: INFO
+mlflow:
+  experiment_name: Ad_Sales_TimeSeries
+  registry_model_name: Ad_Sales_Forecaster
+  tracking_uri: mlruns
+data:
+  date_col: date
+  target_col: revenue
+  exog_cols:
+  - impressions
+  - clicks
+  - CTR
+  - CPC
+  - ad_spend
+  - conversions
+  - CPA
+  - ROAS
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+arima:
+  param_grid:
+    p:
+    - 1
+    - 2
+    d:
+    - 1
+    q:
+    - 1
+    - 2
+    trend:
+    - n
+    - c
+sarimax:
+  param_grid:
+    p:
+    - 1
+    - 2
+    d:
+    - 1
+    q:
+    - 1
+    - 2
+    seasonal_order:
+    - - 1
+      - 1
+      - 1
+      - 7
+    - - 0
+      - 1
+      - 1
+      - 7
+    trend:
+    - n
+    - c
+lstm:
+  param_grid:
+    learning_rate:
+    - 0.001
+    - 0.01
+    batch_size:
+    - 32
+    - 64
+    sequence_length:
+    - 14
+    - 21
+    dropout:
+    - 0.0
+    - 0.2
+    weight_decay:
+    - 0.0
+    - 0.0001
+  hidden_size: 128
+  num_layers: 2
+  dropout: 0.2
+  epochs: 50
+  patience: 7
+  clip_grad_norm: 1.0
+inference:
+  forecast_days: 7

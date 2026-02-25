@@ -1,0 +1,26 @@
+2026-02-25 15:32:02 [INFO    ] logger_setup | Logging initialised -> file: logs\20260225_153202_infer.log
+2026-02-25 15:32:02 [INFO    ] logger_setup | Archive dir         -> C:\Users\modiv\Downloads\jjj\ad-sales-forecasting\logs\archive
+2026-02-25 15:32:02 [INFO    ] main | ********************************************************
+2026-02-25 15:32:02 [INFO    ] main | *   Ad Sales Forecasting - Inference Pipeline          *
+2026-02-25 15:32:02 [INFO    ] main | ********************************************************
+2026-02-25 15:32:05 [INFO    ] src.inference | ============================================================
+2026-02-25 15:32:05 [INFO    ] src.inference | Starting inference pipeline | forecast_days=7
+2026-02-25 15:32:05 [INFO    ] src.data_loader | Loading raw data from: C:\Users\modiv\Downloads\jjj\ad-sales-forecasting\data\raw\global_ads_performance_dataset.csv
+2026-02-25 15:32:05 [INFO    ] src.data_loader |   Loaded 1,800 rows | Date range: 2024-01-01 -> 2024-12-30
+2026-02-25 15:32:05 [INFO    ] src.data_loader |   Daily aggregation -> 365 rows
+2026-02-25 15:32:05 [INFO    ] src.inference |   Using model version 1 | stage=Staging | run_id=7573043c10bc41f2853ef2345f11a284
+2026-02-25 15:32:05 [INFO    ] src.inference |   Model type: SARIMAX
+2026-02-25 15:32:05 [INFO    ] src.inference |   Predictions saved -> data/processed/inference_predictions.csv
+2026-02-25 15:32:05 [INFO    ] src.inference | ============================================================
+2026-02-25 15:32:05 [INFO    ] src.inference | 7-Day Revenue Forecast:
+2026-02-25 15:32:05 [INFO    ] src.inference | ----------------------------------------
+2026-02-25 15:32:05 [INFO    ] src.inference |   2024-12-31 -> $  275,243.12
+2026-02-25 15:32:05 [INFO    ] src.inference |   2025-01-01 -> $   41,229.48
+2026-02-25 15:32:05 [INFO    ] src.inference |   2025-01-02 -> $  161,798.99
+2026-02-25 15:32:05 [INFO    ] src.inference |   2025-01-03 -> $   47,964.77
+2026-02-25 15:32:05 [INFO    ] src.inference |   2025-01-04 -> $   56,267.09
+2026-02-25 15:32:05 [INFO    ] src.inference |   2025-01-05 -> $  170,201.11
+2026-02-25 15:32:05 [INFO    ] src.inference |   2025-01-06 -> $  280,279.27
+2026-02-25 15:32:05 [INFO    ] src.inference | ----------------------------------------
+2026-02-25 15:32:05 [INFO    ] src.inference |   Average : $  147,569.12
+2026-02-25 15:32:05 [INFO    ] src.inference | ============================================================
